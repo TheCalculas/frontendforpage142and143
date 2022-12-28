@@ -33,9 +33,6 @@ export default function SelectWinner() {
   const [second, setSecond] = useState("");
   const [third, setThird] = useState("");
   // create an onclick function
-  const handleClick = () => {
-    console.log("hello");
-  };
 
   return (
     <TableContainer style={{ width: "95%" }}>
@@ -67,7 +64,10 @@ export default function SelectWinner() {
           {rows.map((row) => (
             <TableRow
               key={row.name}
-              style={{ padding: "1px", borderSpacing: "0px" }}
+              style={{
+                padding: "1px",
+                borderSpacing: "0px",
+              }}
             >
               <TableCell style={{ border: 0, paddingBottom: "0px" }}>
                 {row.name}
@@ -98,7 +98,10 @@ export default function SelectWinner() {
                     backgroundColor: "RGB(181, 213, 226)",
                     cursor: "pointer",
                   }}
-                  onclick={handleClick}
+                  onClick={() => {
+                    setFirst(row.studentid);
+                    // console.log(third);
+                  }}
                 >
                   1
                 </button>
@@ -110,7 +113,7 @@ export default function SelectWinner() {
                     backgroundColor: "RGB(207, 235, 222)",
                     cursor: "pointer",
                   }}
-                  onclick={() => {
+                  onClick={() => {
                     setSecond(row.studentid);
                     // console.log(third);
                   }}
@@ -125,7 +128,7 @@ export default function SelectWinner() {
                     backgroundColor: "RGB(253, 239, 203)",
                     cursor: "pointer",
                   }}
-                  onclick={() => {
+                  onClick={() => {
                     setThird(row.studentid);
                     // console.log(third);
                   }}
