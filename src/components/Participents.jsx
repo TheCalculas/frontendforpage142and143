@@ -13,7 +13,7 @@ function Participents() {
     color: "Black",
     backgroundColor: isActive ? "white" : "RGB(255, 237, 199)",
     height: "30px",
-    padding: "6px 4.5rem",
+    padding: "6px 62px",
     borderRadius: "0.5rem",
     // margin: "0px 0px 0px px",
   });

@@ -5,33 +5,52 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 // import "font-awesome/css/font-awesome.min.css";
 const rows = [
   {
     name: "Abhinav Jain",
     studentid: "2020UMT1335",
-    score: 12,
-    rank: 1,
+    rank: -1,
   },
   {
     name: "Deepak Shukla",
     studentid: "2020UMT1335",
-    score: 22,
-    rank: 2,
+    rank: -1,
   },
   {
     name: "Deepak Jain",
     studentid: "2020UMT1335",
-    score: 42,
-    rank: 3,
+    rank: -1,
   },
 ];
 
 export default function SelectWinner() {
-  const [first, setFirst] = useState("");
+  const [first, setFirst] = useState({
+    name: "Abhinav Jain",
+    studentid: "2020UMT1335",
+    rank: -1,
+  });
   const [second, setSecond] = useState("");
   const [third, setThird] = useState("");
+
+  const [array, setArray] = useState(rows);
+  const [newArray, setNewArray] = useState([]);
+  useEffect(() => {
+    setNewArray(filterArray(array));
+  }, []);
+
+  function filterArray(array) {
+    array.filter((item) => {
+      return (
+        item.studentid !== first &&
+        item.studentid !== second &&
+        item.studentid !== third
+      );
+    });
+  }
+
   // create an onclick function
 
   return (
@@ -50,9 +69,7 @@ export default function SelectWinner() {
             <TableCell style={{ fontWeight: "bold", border: 0 }}>
               STUDENT ID
             </TableCell>
-            <TableCell style={{ fontWeight: "bold", border: 0 }}>
-              SCORE
-            </TableCell>
+
             <TableCell
               style={{ fontWeight: "bold", border: 0, paddingLeft: "3rem" }}
             >
@@ -61,6 +78,49 @@ export default function SelectWinner() {
           </TableRow>
         </TableHead>
         <TableBody>
+          {first !== "" && (
+            <TableRow>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.name}
+              </TableCell>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.studentid}
+              </TableCell>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.rank}
+                {/* // button banana hai  */}
+              </TableCell>
+            </TableRow>
+          )}
+          {third !== "" && (
+            <TableRow>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.name}
+              </TableCell>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.studentid}
+              </TableCell>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.rank}
+                {/* // button banana hai  */}
+              </TableCell>
+            </TableRow>
+          )}
+          {third !== "" && (
+            <TableRow>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.name}
+              </TableCell>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.studentid}
+              </TableCell>
+              <TableCell style={{ border: 0, paddingBottom: "0px" }}>
+                {first.rank}
+                {/* // button banana hai  */}
+              </TableCell>
+            </TableRow>
+          )}
+
           {rows.map((row) => (
             <TableRow
               key={row.name}
@@ -76,15 +136,10 @@ export default function SelectWinner() {
                 {row.studentid}
               </TableCell>
               <TableCell
-                style={{ border: 0, paddingBottom: "0px", paddingLeft: "2rem" }}
-              >
-                {row.score}
-              </TableCell>
-              <TableCell
                 style={{
                   border: 0,
                   paddingBottom: "0px",
-                  paddingLeft: "2rem",
+                  paddingLeft: "4px",
                   display: "flex",
                   justifyContent: "space-around",
                   alignItems: "center",
@@ -95,6 +150,7 @@ export default function SelectWinner() {
                     color: "RGB(158, 198, 228)",
                     borderRadius: "50%",
                     border: "none",
+                    padding: "5px 10px",
                     backgroundColor: "RGB(181, 213, 226)",
                     cursor: "pointer",
                   }}
@@ -108,8 +164,10 @@ export default function SelectWinner() {
                 <button
                   style={{
                     color: "RGB(168, 219, 195)",
-                    borderRadius: "50%",
+                    borderRadius: "100%",
+                    padding: "5px 10px",
                     border: "none",
+
                     backgroundColor: "RGB(207, 235, 222)",
                     cursor: "pointer",
                   }}
@@ -125,6 +183,7 @@ export default function SelectWinner() {
                     color: "RGB(251, 228, 163)",
                     borderRadius: "50%",
                     border: "none",
+                    padding: "5px 10px",
                     backgroundColor: "RGB(253, 239, 203)",
                     cursor: "pointer",
                   }}
